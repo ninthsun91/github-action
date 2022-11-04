@@ -28,5 +28,6 @@ jobs:
         
     - run: npm ci
     - run: npm run build --if-present
+    - run: npm test
     - run: echo Hello
     - run: echo "SECRET_KEY=$SECRET_KEY" >> envtest.txt
