@@ -1,0 +1,22 @@
+{
+    "include": ["src"],
+    "compilerOptions": {
+        "outDir": "dist",
+        "target": "ES6",
+        "module": "CommonJS",
+        "lib": ["ESNext", "DOM", "DOM.Iterable"],
+
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "sourceMap": true,
+        "allowJs": true,
+        "jsx": "react",
+
+        "strict": true,
+        "noImplicitAny": true,
+        "forceConsistentCasingInFileNames": true
+    },
+    "ts-node": {
+        "esm": true
+    }
+}
