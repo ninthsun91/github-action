@@ -1,0 +1,32 @@
+name: Integration - run test
+
+on:
+  pull_request:
+    types: [opened, reopened]
+    branches: ["test"]
+
+jobs:
+  run-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        working-directory: server
+        run: npm ci
+
+      - name: Run end-to-end tests
+        working-directory: server
+        run: npm run test
+
+      - name: Block merge if tests fail
+        if: ${{ failure() }}
+        run: |
+          echo "Some tests failed. Please fix them before merging."
+          exit 1
