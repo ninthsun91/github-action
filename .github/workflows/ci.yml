@@ -18,10 +18,12 @@ jobs:
           node-version: '18'
 
       - name: Install dependencies
+        working-directory: server
         run: npm ci
 
       - name: Run end-to-end tests
-        run: npm run test:e2e
+        working-directory: server
+        run: npm run test
 
       - name: Block merge if tests fail
         if: ${{ failure() }}
